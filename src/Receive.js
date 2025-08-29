@@ -1,5 +1,6 @@
 // src/pages/Receive.js
-import React, { useState } from "react";
+import React, { useState } from "react"; 
+import { backendUrl } from "./utils";
 
 function Receive() {
   const [code, setCode] = useState("");
@@ -17,7 +18,7 @@ function Receive() {
     setText("");
 
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/receive/${code}`);
+      const res = await fetch(`${backendUrl}/api/v1/receive/${code}`);
       if (res.ok) {
         const result = await res.json();
         if (result.data) {

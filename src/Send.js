@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { backendUrl } from "./utils";
 
 export default function Send() {
   const [text, setText] = useState("");
@@ -9,7 +10,7 @@ export default function Send() {
     if (!text) return alert("Paste something to send");
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:8080/api/v1/send`, {
+      const res = await fetch(`${backendUrl}/api/v1/send`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: text }),
